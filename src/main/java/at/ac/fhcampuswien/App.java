@@ -251,7 +251,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        oneMonthCalendar(28,2);
+        oneMonthCalendar(31,6);
 
         showLcg(lcg(55));
 
@@ -264,8 +264,7 @@ public class App {
         if(swapArrays(array1, array2)) {
             showArray(array1);
             showArray(array2);
-        }
-        System.out.println("Length of Arrays are not equal!");
+        } else System.out.println("Length of Arrays are not equal!");
 
         String camelCase1  = "Hello my NYme isn't Illia";
         String camelCase2 = new String(camelCase(camelCase1));
