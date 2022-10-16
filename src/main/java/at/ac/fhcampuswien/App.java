@@ -5,93 +5,6 @@ import java.util.Scanner;
 
 public class App {
 
-/*    public static void oneMonthCalendar(int amountOfDays, int firstDay) {
-
-    }
-
-    public static long[] lcg(long seed) {
-        long[] result = new long [10];
-        return result;
-    }
-
-    public static void guessingGame(int numberToGuess) {
-
-    }
-
-    public static int randomNumberBetweenOneAndHundred() {
-
-    }*/
-
-/*
-    public static int[] extendArray(int[] arrayA, int[] arrayB) {
-        int[] arrayC = new int[arrayA.length+ arrayB.length];
-
-        if(arrayA.length > arrayB.length){
-            // start with B
-            for (int i = 0; i < arrayB.length; i++) {
-                arrayC[i] = arrayB[i];
-            }
-
-            for (int i = arrayB.length; i < arrayA.length+ arrayB.length; i++) {
-                arrayC[i] = arrayA[i-arrayB.length];
-            }
-        }
-
-        else if(arrayB.length > arrayA.length) {
-            //start with A
-            for (int i = 0; i < arrayA.length; i++) {
-                arrayC[i] = arrayA[i];
-            }
-
-            for (int i = arrayA.length; i < arrayA.length+ arrayB.length; i++) {
-                arrayC[i] = arrayA[i-arrayA.length];
-            }
-        }
-
-
-        else {
-            int counter = 0;
-            for (int i = 0; i < arrayA.length; i++) {
-                arrayC[counter] = arrayA[i];
-                counter++;
-                arrayC[i+1] = arrayB[i];
-                counter++;
-            }
-
-        }
-
-        return arrayC;
-    }
-*/
-
-/*    public static int generateRandomMonth() {
-        return 1;
-    }
-
-    public static int monthMapper() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number between ... or r");
-
-        String userinput = scanner.nextLine();
-
-        if(userinput.equals("r")) {
-
-            }
-        else {
-        }
-
-        String month = "Invalid month";
-
-        switch (userinput) {
-            case "1":
-            month = "January";
-            case '2':
-            month = "February";
-        }
-
-    }
-    */
-
     //task 1
     public static void oneMonthCalendar(int amountOfDays, int firstDay) {
         int amountOfWeeks = (int) Math.ceil((double)amountOfDays/7);
@@ -289,7 +202,7 @@ public class App {
 
             if(i == 0) {
                 if ((int) sentenceChar1[i] > 65 && (int) sentenceChar1[i] < 90) {
-                    sentenceInt[i] = ((int) sentenceChar1[i]);
+                    sentenceInt[i] = sentenceChar1[i];
                     sentenceChar2[count] = (char) sentenceInt[i];
                 }
                 if ((int) sentenceChar1[i] >= 97 && (int) sentenceChar1[i] <= 122) {
@@ -321,12 +234,28 @@ public class App {
         return builder.toString();
     }
 
+    //task 6
+    public static int checkDigit(int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += (i+2)*array[i];
+        }
+        int remainder = sum%11;
+        int digit = 11 - remainder;
+
+        if(digit == 10)
+            return 0;
+        else if(digit == 11)
+            return 5;
+        else return digit;
+    }
+
     public static void main(String[] args) {
         oneMonthCalendar(28,2);
 
         showLcg(lcg(55));
 
-/*        int randomNumber = randomNumberBetweenOneAndHundred();
+        int randomNumber = randomNumberBetweenOneAndHundred();
         guessingGame(randomNumber);
 
         int[] array1 = fillArray();
@@ -336,12 +265,15 @@ public class App {
             showArray(array1);
             showArray(array2);
         }
-        System.out.println("Length of Arrays are not equal!");*/
+        System.out.println("Length of Arrays are not equal!");
 
         String camelCase1  = "Hello my NYme isn't Illia";
         String camelCase2 = new String(camelCase(camelCase1));
 
         System.out.println(camelCase2);
+        int[] arraydigit = {5,6,7,4,7,8};
+        showArray(arraydigit);
+        System.out.println("Check digit: " + checkDigit(arraydigit));
 
     }
 }
